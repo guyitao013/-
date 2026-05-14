@@ -5,13 +5,13 @@
 
 
 typedef int elemtype ;
-//´´½¨½á¹¹Ìå
+//åˆ›å»ºç»“æ„ä½“
 typedef struct LNode {
-	elemtype data;//Êı¾İÓò
-	struct LNode* next;//Ö¸ÕëÓò
+	elemtype data;//æ•°æ®åŸŸ
+	struct LNode* next;//æŒ‡é’ˆåŸŸ
 }LinkNode, * LinkList;
 
-//ÉùÃ÷º¯Êı
+//å£°æ˜å‡½æ•°
 LinkList createList();
 int createFromHead(LinkList head);
 void printList(LinkList head);  
@@ -20,63 +20,63 @@ LinkNode* getElem(LinkList head, int local);
 int deleteLinkList(LinkList head, int i);
 
 
-//Ö÷º¯Êı
+//ä¸»å‡½æ•°
 void main() {
 	LinkList L;
 	L = createList();
 	if (L != NULL) {
-		printf("Á´±í´´½¨³É¹¦\n");
+		printf("é“¾è¡¨åˆ›å»ºæˆåŠŸ\n");
 
 		int result = createFromHead(L);
 
 		if (result == SUCCESS) {
-			printf("Êı¾İ²åÈë³É¹¦\n");
+			printf("æ•°æ®æ’å…¥æˆåŠŸ\n");
 			printList(L);
 
-			// ²åÈë²Ù×÷
+			// æ’å…¥æ“ä½œ
 			int pos;
 			elemtype val;
-			printf("ÇëÊäÈëÒª²åÈëµÄÎ»ÖÃ£º");
+			printf("è¯·è¾“å…¥è¦æ’å…¥çš„ä½ç½®ï¼š");
 			scanf_s("%d", &pos);
-			printf("ÇëÊäÈëÒª²åÈëµÄÖµ£º");
+			printf("è¯·è¾“å…¥è¦æ’å…¥çš„å€¼ï¼š");
 			scanf_s("%d", &val);
 
 			int insertResult = insertLinkList(L, pos, val);
 			if (insertResult == SUCCESS) {
-				printf("²åÈë³É¹¦\n");
+				printf("æ’å…¥æˆåŠŸ\n");
 				printList(L);
 			}
 			else {
-				printf("²åÈëÊ§°Ü£¬Î»ÖÃÎŞĞ§\n");
+				printf("æ’å…¥å¤±è´¥ï¼Œä½ç½®æ— æ•ˆ\n");
 			}
 
-			// É¾³ı²Ù×÷ ¡û ¼ÓÔÚÕâÀï
+			// åˆ é™¤æ“ä½œ â† åŠ åœ¨è¿™é‡Œ
 			int delPos;
-			printf("ÇëÊäÈëÒªÉ¾³ıµÄÎ»ÖÃ£º");
+			printf("è¯·è¾“å…¥è¦åˆ é™¤çš„ä½ç½®ï¼š");
 			scanf_s("%d", &delPos);
 
 			int deleteResult = deleteLinkList(L, delPos);
 			if (deleteResult == SUCCESS) {
-				printf("É¾³ı³É¹¦\n");
+				printf("åˆ é™¤æˆåŠŸ\n");
 				printList(L);
 			}
 			else {
-				printf("É¾³ıÊ§°Ü£¬Î»ÖÃÎŞĞ§\n");
+				printf("åˆ é™¤å¤±è´¥ï¼Œä½ç½®æ— æ•ˆ\n");
 			}
 
 			int len = lengthLinkList(L);
-			printf("Á´±í³¤¶È£º%d\n", len);
+			printf("é“¾è¡¨é•¿åº¦ï¼š%d\n", len);
 		}
 		else {
-			printf("Êı¾İ²åÈëÊ§°Ü\n");
+			printf("æ•°æ®æ’å…¥å¤±è´¥\n");
 		}
 	}
 	else {
-		printf("Á´±í´´½¨Ê§°Ü\n");
+		printf("é“¾è¡¨åˆ›å»ºå¤±è´¥\n");
 	}
 }
 
-//´´½¨Í·½Úµã
+//åˆ›å»ºå¤´èŠ‚ç‚¹
 LinkList createList() {
 	LinkNode* head;
 	head = (LinkNode*)malloc(sizeof(LinkNode));
@@ -88,25 +88,25 @@ LinkList createList() {
 		return NULL;
 	}
 }
-//Í·²å·¨
+//å¤´æ’æ³•
 int createFromHead(LinkList head)
 {
-	LinkNode* s;//Ö¸Ïò½á¹¹ÌåµÄÊ×µØÖ·
-	elemtype e;//¶¨ÒåÊäÈëÕûĞÍ
-	//Èç¹û²»°´#£¬ÔòÒ»Ö±Ñ­»·
+	LinkNode* s;//æŒ‡å‘ç»“æ„ä½“çš„é¦–åœ°å€
+	elemtype e;//å®šä¹‰è¾“å…¥æ•´å‹
+	//å¦‚æœä¸æŒ‰#ï¼Œåˆ™ä¸€ç›´å¾ªç¯
 
-	printf("ÇëÊäÈëÕûÊı£¨ÊäÈë-1½áÊø£©£º\n");
+	printf("è¯·è¾“å…¥æ•´æ•°ï¼ˆè¾“å…¥-1ç»“æŸï¼‰ï¼š\n");
 
 	while (1)
 	{
-		scanf_s("%d", &e);//ÊäÈëÕûÊı
+		scanf_s("%d", &e);//è¾“å…¥æ•´æ•°
 		if (e == -1) {
 			break;
 		}
-		s = (LinkNode*)malloc(sizeof(LinkNode));//¿ª±ÙÄÚ´æ¿Õ¼ä
+		s = (LinkNode*)malloc(sizeof(LinkNode));//å¼€è¾Ÿå†…å­˜ç©ºé—´
 		if (s != NULL)
 		{
-			s->data = e;//°Ñe´æµ½½áµãÊı¾İÓòÖĞ
+			s->data = e;//æŠŠeå­˜åˆ°ç»“ç‚¹æ•°æ®åŸŸä¸­
 			s->next = head->next;//
 			head->next = s;
 		}
@@ -117,17 +117,17 @@ int createFromHead(LinkList head)
 	}
 	return SUCCESS;
 }
-//´òÓ¡µ¥Á´±í
+//æ‰“å°å•é“¾è¡¨
 void printList(LinkList head) {
-	LinkNode* p = head->next;  // Ìø¹ıÍ·½Úµã
-	printf("Á´±íÄÚÈİ£¨Í·²å·¨£¬ÄæĞò£©£º");
+	LinkNode* p = head->next;  // è·³è¿‡å¤´èŠ‚ç‚¹
+	printf("é“¾è¡¨å†…å®¹ï¼ˆå¤´æ’æ³•ï¼Œé€†åºï¼‰ï¼š");
 	while (p != NULL) {
 		printf("%d ", p->data);
 		p = p->next;
 	}
 	printf("\n");
 }
-//»ñÈ¡Á´±í³¤¶È
+//è·å–é“¾è¡¨é•¿åº¦
 int lengthLinkList(LinkList head)
 {
 	int len = 0;
@@ -139,13 +139,13 @@ int lengthLinkList(LinkList head)
 	}
 	return len;
 }
-//²éÕÒµÚi¸ö
+//æŸ¥æ‰¾ç¬¬iä¸ª
 LinkNode* getElem(LinkList head, int local)
 {
 	int i = 1;
 	LinkNode* pre;
-	//È·¶¨ºÏÀí·¶Î§
-	if ((local < 1) || (local > lengthLinkList(head) + 1))//·ûºÏÈÎÒâÒ»¸ö¶¼ÊÇ³¬³ö½çÏŞ
+	//ç¡®å®šåˆç†èŒƒå›´
+	if ((local < 1) || (local > lengthLinkList(head) + 1))//ç¬¦åˆä»»æ„ä¸€ä¸ªéƒ½æ˜¯è¶…å‡ºç•Œé™
 	{
 		return NULL;
 	}
@@ -160,6 +160,7 @@ LinkNode* getElem(LinkList head, int local)
 		return pre;
 	}
 }
+//æ’å…¥
 int insertLinkList(LinkList head, int i, elemtype e)
 {
 	int n = 1;
@@ -183,6 +184,7 @@ int insertLinkList(LinkList head, int i, elemtype e)
 		return SUCCESS;
 	}
 }
+//åˆ é™¤
 int deleteLinkList(LinkList head, int i)
 {
 	int n = 1;
